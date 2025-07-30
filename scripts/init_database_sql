@@ -1,4 +1,7 @@
-
+/*
+WARNING:
+	Running this script will drop the entire database 'DataWarehouse'
+*/
 USE master;
 GO
 
