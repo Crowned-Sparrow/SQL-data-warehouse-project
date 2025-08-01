@@ -1,3 +1,6 @@
+--NOTE--
+--EXECT bronze.load_bronze
+--Full load no history
 CREATE OR ALTER PROCEDURE bronze.load_bronze AS
 BEGIN
 	DECLARE @start_time DATETIME, @end_time DATETIME
