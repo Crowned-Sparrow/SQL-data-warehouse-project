@@ -1,3 +1,6 @@
+--NOTE--
+--Running this will completely drop exsited tables and data contained
+--There are changes in data structure of this layer happening in proc_load_silver
 IF OBJECT_ID ('silver.crm_cust_info','U') IS NOT NULL
 	DROP TABLE silver.crm_cust_info;
 CREATE TABLE silver.crm_cust_info (
