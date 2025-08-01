@@ -1,3 +1,4 @@
+-- Customer
 INSERT INTO silver.erp_cust_az12(
 	cid,
 	bdate,
@@ -15,6 +16,7 @@ END AS bdate,
 CASE
 	WHEN UPPER(TRIM(gen)) ='M' THEN 'Male'
 	WHEN UPPER(TRIM(gen)) ='F' THEN 'Female'
-	ELSE NULL
+	WHEN UPPER(TRIM(gen)) != 'Male' AND UPPER(TRIM(gen)) != 'Female' THEN NULL
+	ELSE gen
 END AS gen
 FROM bronze.erp_cust_az12
