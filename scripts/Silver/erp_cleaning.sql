@@ -20,3 +20,19 @@ CASE
 	ELSE gen
 END AS gen
 FROM bronze.erp_cust_az12
+-- Loc
+INSERT INTO silver.erp_loc_a101(
+	cid,
+	cntry
+)
+SELECT 
+cid,
+CASE  
+	WHEN UPPER(TRIM(cntry)) = 'US'	THEN 'United States'
+	WHEN UPPER(TRIM(cntry)) = 'USA'	THEN 'United States'
+	WHEN UPPER(TRIM(cntry)) = 'DE'	THEN 'Germany'
+	WHEN cntry IS NULL				THEN 'n/a'
+	WHEN UPPER(TRIM(cntry)) =''		THEN 'n/a'
+	ELSE cntry
+END AS cntry
+FROM bronze.erp_loc_a101
