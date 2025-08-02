@@ -54,7 +54,7 @@ BEGIN
   
 	  --Product_info
 	PRINT('>> Truncating table silver.crm_prd_info')
-	TRUNCATE TABLE silver.crm_cust_info
+	TRUNCATE TABLE silver.crm_prd_info
 	PRINT('>> Inserting table silver.crm_prd_info')
 	IF OBJECT_ID ('silver.crm_prd_info','U') IS NOT NULL
 		DROP TABLE silver.crm_prd_info;
@@ -99,7 +99,7 @@ BEGIN
 
 	--Sales_info
 	PRINT('>> Truncating table silver.crm_sales_details')
-	TRUNCATE TABLE silver.crm_cust_info
+	TRUNCATE TABLE silver.crm_sales_details
 	PRINT('>> Inserting table silver.crm_sales_details')
 	IF OBJECT_ID ('silver.crm_sales_details','U') IS NOT NULL
 		DROP TABLE silver.crm_sales_details;
@@ -160,7 +160,7 @@ BEGIN
 
 	-- Customer
 	PRINT('>> Truncating table silver.erp_cust_az12')
-	TRUNCATE TABLE silver.crm_cust_info
+	TRUNCATE TABLE silver.erp_cust_az12
 	PRINT('>> Inserting table silver.erp_cust_az12')
 	INSERT INTO silver.erp_cust_az12(
 		cid,
@@ -185,14 +185,14 @@ BEGIN
 	FROM bronze.erp_cust_az12
 	-- Loc
 	PRINT('>> Truncating table silver.erp_loc_a101')
-	TRUNCATE TABLE silver.crm_cust_info
+	TRUNCATE TABLE silver.erp_loc_a101
 	PRINT('>> Inserting table silver.erp_loc_a101')
 	INSERT INTO silver.erp_loc_a101(
 		cid,
 		cntry
 	)
 	SELECT 
-	cid,
+	REPLACE(cid,'-','') AS cid,
 	CASE  
 		WHEN UPPER(TRIM(cntry)) = 'US'	THEN 'United States'
 		WHEN UPPER(TRIM(cntry)) = 'USA'	THEN 'United States'
@@ -205,7 +205,7 @@ BEGIN
 
 	--Categories
 	PRINT('>> Truncating table silver.erp_px_cat_g1v2')
-	TRUNCATE TABLE silver.crm_cust_info
+	TRUNCATE TABLE silver.erp_px_cat_g1v2
 	PRINT('>> Inserting table silver.erp_px_cat_g1v2')
 	INSERT INTO silver.erp_px_cat_g1v2
 	(
