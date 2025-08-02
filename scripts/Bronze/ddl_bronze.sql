@@ -47,7 +47,7 @@ IF OBJECT_ID ('bronze.erp_cust_az12','U') IS NOT NULL
 CREATE TABLE bronze.erp_cust_az12 (
 	cid		VARCHAR(50),
 	bdate	DATE,	
-	gen		NVARCHAR(7)	CHECK (GEN IN ('Male', 'Female'))
+	gen		NVARCHAR(7)	CHECK (GEN IN ('Male', 'Female','n/a'))
 );
 
 
@@ -65,5 +65,5 @@ CREATE TABLE bronze.erp_px_cat_g1v2 (
 	id			NVARCHAR(50),
 	cat			NVARCHAR(50),
 	subcat		NVARCHAR(50),
-	maintenance	NVARCHAR(4) CHECK (MAINTENANCE IN ('Yes','No'))
+	maintenance	NVARCHAR(4) CHECK (MAINTENANCE IN ('Yes','No','n/a'))
 );
